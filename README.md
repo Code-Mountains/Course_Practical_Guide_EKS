@@ -843,14 +843,18 @@ compose.parallel.feed_queue: Pending: set()
 ERROR: for proxy  Cannot start service proxy: driver failed programming external connectivity on endpoint course_practical_guide_eks_proxy_1 (79f0b2dba13e5ed6d5d6ce2f6c1e233df7d8c675107e5921c383252abb23bcfe): Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use
 ERROR: compose.cli.main.exit_with_metrics: Encountered errors while bringing up the project.
 =======
+```
+
 # Build each image first
 ```
 $ cd renting-api/api/ 
 
 $ docker build -t renting-api-image .
+```
 
 ## OUTPUT 
 $ docker build -t renting-api-image .
+```
 [+] Building 148.0s (11/11) FINISHED
  => [internal] load build definition from Dockerfile                                                                          0.0s
  => => transferring dockerfile: 283B                                                                                          0.0s
@@ -869,9 +873,10 @@ $ docker build -t renting-api-image .
  => => exporting layers                                                                                                       1.7s
  => => writing image sha256:9359280ad31cd84280a1b4c74e073e918ebe9e5d0b92d78368fa336c3c0c8d24                                  0.0s
  => => naming to docker.io/library/renting-api-image                                                                          0.0s
-
+```
 
 $ docker build -t inventory-api-image .
+```
 [+] Building 41.0s (11/11) FINISHED
  => [internal] load .dockerignore                                                                                             0.0s
  => => transferring context: 2B                                                                                               0.0s
@@ -902,9 +907,10 @@ $ docker build -t inventory-api-image .
  => => exporting layers                                                                                                       0.7s
  => => writing image sha256:511ef81f3d085ab7ec01f7e071154a402548c6e32aef7d297d93ff441da5702a                                  0.0s
  => => naming to docker.io/library/inventory-api-image                                                                        0.0s
-
+```
 
 $ docker build -t clients-api-image .
+```
 [+] Building 0.6s (15/15) FINISHED
  => [internal] load build definition from Dockerfile                                                                          0.0s
  => => transferring dockerfile: 531B                                                                                          0.0s
@@ -927,9 +933,10 @@ $ docker build -t clients-api-image .
  => => exporting layers                                                                                                       0.0s
  => => writing image sha256:155f6cc40347448fb775213a1bff0c3fb77f77d120704cf4e4ca73a3b2c9fbda                                  0.0s
  => => naming to docker.io/library/clients-api-image                                                                          0.0s
-
+```
 
 $ docker build -t resource-api-image .
+```
 [+] Building 1.4s (10/10) FINISHED
  => [internal] load .dockerignore                                                                                             0.0s
  => => transferring context: 2B                                                                                               0.0s
@@ -948,3 +955,4 @@ $ docker build -t resource-api-image .
  => => writing image sha256:941df58b088e97f2aeff449334dd7551c3a7a09a47cd462f35faf38367e1fc52                                  0.0s
  => => naming to docker.io/library/resource-api-image                                                                         0.0s
  
+```
