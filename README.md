@@ -148,7 +148,6 @@ compose.cli.verbose_proxy.proxy_callable: docker info -> {'Architecture': 'x86_6
  'ContainerdCommit': {'Expected': 'd8f198a4ed8892c764191ef7b3b06d8a2eeb5c7f',
                       'ID': 'd8f198a4ed8892c764191ef7b3b06d8a2eeb5c7f'},
  'Containers': 1,
-...
 compose.cli.verbose_proxy.proxy_callable: docker inspect_network <- ('course_practical_guide_eks_default')
 compose.network.ensure: Creating network "course_practical_guide_eks_default" with the default driver
 compose.cli.verbose_proxy.proxy_callable: docker create_network <- (name='course_practical_guide_eks_default', driver=None, options=None, ipam=None, internal=False, enable_ipv6=False, labels={'com.docker.compose.project': 'course_practical_guide_eks', 'com.docker.compose.network': 'default', 'com.docker.compose.version': '1.29.2'}, attachable=True, check_duplicate=True)
@@ -964,6 +963,5 @@ renting-api_1    | * Min threads: 5, max threads: 5
 renting-api_1    | * Environment: development
 renting-api_1    | * Listening on tcp://0.0.0.0:5004
 renting-api_1    | Use Ctrl-C to stop
-
 
 ```
