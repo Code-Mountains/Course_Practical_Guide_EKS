@@ -965,3 +965,18 @@ renting-api_1    | * Listening on tcp://0.0.0.0:5004
 renting-api_1    | Use Ctrl-C to stop
 
 ```
+
+# Watch Docker ps:
+```
+Every 2.0s: docker ps -a                                                                                                                                   vault.thecodemountains.com: Sun Dec  3 13:25:15 2023
+
+CONTAINER ID   IMAGE                                            COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+9d2909230909   nginx:stable-alpine                              "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp           course_practical_guide_eks_proxy_1
+3edeb8940b5d   course_practical_guide_eks_inventory-api         "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:5001->5001/tcp, :::5001->5001/tcp   course_practical_guide_eks_inventory-api_1
+996158f7f461   course_practical_guide_eks_renting-api           "bundle exec rails s…"   3 minutes ago   Up 3 minutes   0.0.0.0:5004->3000/tcp, :::5004->3000/tcp   course_practical_guide_eks_renting-api_1
+1cdd7c6315dc   course_practical_guide_eks_resources-api         "gunicorn --worker-t…"   3 minutes ago   Up 3 minutes   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   course_practical_guide_eks_resources-api_1
+b0c931b309cc   course_practical_guide_eks_clients-api           "/bin/sh -c 'dotnet …"   3 minutes ago   Up 3 minutes   0.0.0.0:5003->5003/tcp, :::5003->5003/tcp   course_practical_guide_eks_clients-api_1
+48e1d4a99fd0   course_practical_guide_eks_front-end             "nginx -g 'daemon of…"   3 minutes ago   Up 3 minutes   0.0.0.0:5002->80/tcp, :::5002->80/tcp       course_practical_guide_eks_front-end_1
+dc46e930bd7e   releases-docker.jfrog.io/postgres:13.10-alpine   "docker-entrypoint.s…"   4 days ago      Up 9 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgresql
+
+```
