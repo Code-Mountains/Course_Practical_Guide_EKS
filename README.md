@@ -980,3 +980,39 @@ b0c931b309cc   course_practical_guide_eks_clients-api           "/bin/sh -c 'dot
 dc46e930bd7e   releases-docker.jfrog.io/postgres:13.10-alpine   "docker-entrypoint.s…"   4 days ago      Up 9 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgresql
 
 ```
+
+# Deploying these apps in k8s using Rancher:
+```
+kubectl create namespace development
+
+$ ./create.sh 
+Missing the 'Namespace' parameter. Taking the default one which is 'development'
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/sysadmin/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/sysadmin/.kube/config
+Release "front-end-development" does not exist. Installing it now.
+NAME: front-end-development
+LAST DEPLOYED: Thu Dec  7 23:44:36 2023
+NAMESPACE: development
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+$ kubectl get all -n development -o wide
+NAME                                                             READY   STATUS             RESTARTS      AGE   IP           NODE         NOMINATED NODE   READINESS GATES
+pod/front-end-development-acg-front-end-749d4cc54d-mhsp4         1/1     Running            0             48s   10.42.0.18   local-node   <none>           <none>
+pod/front-end-development-acg-front-end-proxy-5b9659965c-j7bwk   0/1     CrashLoopBackOff   2 (23s ago)   48s   10.42.0.17   local-node   <none>           <none>
+
+NAME                              TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE   SELECTOR
+service/front-end-service         NodePort   10.43.143.170   <none>        80:31102/TCP   48s   app=acg-front-end,release=front-end-development
+service/front-end-service-proxy   NodePort   10.43.247.116   <none>        80:31065/TCP   48s   app=acg-front-end-proxy,release=front-end-development
+
+NAME                                                        READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS            IMAGES                        SELECTOR
+deployment.apps/front-end-development-acg-front-end         1/1     1            1           48s   acg-front-end         mariomerco/front-end:latest   app=acg-front-end,release=front-end-development
+deployment.apps/front-end-development-acg-front-end-proxy   0/1     1            0           48s   acg-front-end-proxy   nginx                         app=acg-front-end-proxy,release=front-end-development
+
+NAME                                                                   DESIRED   CURRENT   READY   AGE   CONTAINERS            IMAGES                        SELECTOR
+replicaset.apps/front-end-development-acg-front-end-749d4cc54d         1         1         1       48s   acg-front-end         mariomerco/front-end:latest   app=acg-front-end,pod-template-hash=749d4cc54d,release=front-end-development
+replicaset.apps/front-end-development-acg-front-end-proxy-5b9659965c   1         1         0       48s   acg-front-end-proxy   nginx                         app=acg-front-end-proxy,pod-template-hash=5b9659965c,release=front-end-development
+
+
+```
